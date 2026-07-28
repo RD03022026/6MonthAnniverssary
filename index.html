@@ -1063,6 +1063,12 @@ animation:bounce 2s infinite;
     const digits = normalizeDigits(pinInput.value);
     if (digits === CORRECT_DIGITS){
       showScreen('screen-wish');
+      const music = document.getElementById("bgm");
+    const musicBtn = document.getElementById("musicBtn");
+
+    music.currentTime = 11;
+    music.play().catch(() => {});
+    musicBtn.textContent = "❚❚";
     } else {
       lockError.classList.add('show');
       pinInput.classList.add('shake');
@@ -1101,26 +1107,21 @@ window.addEventListener('load',()=>{
 <div style="font-weight:600">Our Song</div>
 <div style="font-size:12px;opacity:.75">Tap to Play</div>
 </div>
-<audio id="bgm" loop="">
+<audio id="bgm" preload="auto" loop>
 <source src="LoveSong.mp3" type="audio/mpeg"/>
 </audio>
 </div>
 <script>
 const btn = document.getElementById('musicBtn');
 const a = document.getElementById('bgm');
-let firstPlay = true;
 if(btn && a){
     btn.onclick = () => {
         if(a.paused){
-            if(firstPlay){
-                a.currentTime = 11;   // Change 80 to your desired start time
-                firstPlay = false;
-            }
             a.play().catch(()=>{});
-            btn.textContent = '❚❚';
+            btn.textContent = "❚❚";
         }else{
             a.pause();
-            btn.textContent = '▶';
+            btn.textContent = "▶";
         }
     };
 }
