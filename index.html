@@ -1110,7 +1110,9 @@ const btn=document.getElementById('musicBtn');
 const a=document.getElementById('bgm');
 if(btn&&a){
 btn.onclick=()=>{
- if(a.paused){a.play().catch(()=>{});btn.textContent='❚❚';}
+ if(a.paused){
+   a.currentTime = 15;
+   a.play().catch(()=>{});btn.textContent='❚❚';}
  else{a.pause();btn.textContent='▶';}
 };
 }
