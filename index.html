@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>6 Month Anniversary Wish</title>
+<title>For Dhruvi — 6 Months</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&amp;family=Work+Sans:wght@300;400;500;600&amp;family=Caveat:wght@500;600&amp;display=swap" rel="stylesheet"/>
 <style>
@@ -663,13 +663,65 @@ body::after{
  border:1px solid rgba(255,255,255,.12)!important;
  box-shadow:0 18px 40px rgba(0,0,0,.25);
 }
+</style><style>
+/* ===== Phase 1B ===== */
+.glass-player{
+position:fixed;right:22px;bottom:22px;z-index:9999;
+display:flex;align-items:center;gap:10px;
+padding:12px 16px;border-radius:18px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.15);
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+.glass-player button{
+background:#d7b16b;color:#111;border:none;border-radius:50%;
+width:42px;height:42px;font-size:18px;cursor:pointer;
+}
+.lock-layout{
+background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+border:1px solid rgba(255,255,255,.12);
+border-radius:28px;
+padding:60px 40px;
+max-width:520px;
+margin:auto;
+box-shadow:0 30px 80px rgba(0,0,0,.45);
+}
+.lock-title{font-size:52px!important}
+.hero{
+overflow:hidden;
+}
+.hero::before{
+content:"";
+position:absolute;inset:0;
+background:radial-gradient(circle at center,rgba(255,215,180,.16),transparent 60%);
+animation:heroPulse 6s ease-in-out infinite;
+pointer-events:none;
+}
+@keyframes heroPulse{
+50%{transform:scale(1.08);opacity:.9}
+}
+.hero .names{
+font-size:64px!important;
+letter-spacing:2px;
+}
+.scroll-indicator{
+position:absolute;bottom:22px;left:50%;
+transform:translateX(-50%);
+font-size:14px;color:#fff;opacity:.7;
+animation:bounce 2s infinite;
+}
+@keyframes bounce{
+50%{transform:translate(-50%,8px)}
+}
+.fade-in{animation:fadeIn .8s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 </style></head>
 <body>
 <div class="loader" id="v2loader">
 <h1>Rooshit ❤ Dhruvi</h1>
 <p>Loading our story...</p>
 </div>
-
 <div id="hearts"></div>
 <div id="lightbox">
 <div id="lightbox-close">close ✕</div>
@@ -701,7 +753,7 @@ body::after{
 <!-- ============ SCREEN 1 — ANNIVERSARY WISH ============ -->
 <section class="app-screen" id="screen-wish">
 <div class="hero-bg" id="heroBg"></div>
-<div class="hero">
+<div class="hero fade-in">
 <div class="eyebrow">Six Months Ago, Two Became One Story</div>
 <div class="names">My Love, <span class="amp">Dhruvi</span></div>
 <div class="big-number">6</div>
@@ -714,7 +766,7 @@ body::after{
 <div class="continue-caption">Hamne kya kara 6 month me?</div>
 <button class="next-btn" data-target="screen-taught">Click here for what we did in six months →</button>
 </div>
-</div>
+<div class="scroll-indicator">↓ Scroll to continue</div></div>
 </section>
 <!-- ============ SCREEN 2 — WHAT SIX MONTHS TAUGHT US ============ -->
 <section class="app-screen" id="screen-taught">
@@ -1040,7 +1092,32 @@ window.addEventListener('load',()=>{
  setTimeout(()=>{
   const l=document.getElementById('v2loader');
   if(l) l.classList.add('hide');
- },2800);
+ },2100);
+});
+</script>
+<div class="glass-player">
+<button id="musicBtn">▶</button>
+<div>
+<div style="font-weight:600">Our Song</div>
+<div style="font-size:12px;opacity:.75">Tap to Play</div>
+</div>
+<audio id="bgm" loop="">
+<source src="Chaand-Ne-Kaho.mp3" type="audio/mpeg"/>
+</audio>
+</div>
+<script>
+const btn=document.getElementById('musicBtn');
+const a=document.getElementById('bgm');
+if(btn&&a){
+btn.onclick=()=>{
+ if(a.paused){a.play().catch(()=>{});btn.textContent='❚❚';}
+ else{a.pause();btn.textContent='▶';}
+};
+}
+document.querySelectorAll('.next-btn').forEach(b=>{
+ b.addEventListener('click',()=>document.body.animate(
+ [{opacity:1},{opacity:.5},{opacity:1}],{duration:500}
+ ));
 });
 </script></body>
 </html>
