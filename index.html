@@ -1106,15 +1106,23 @@ window.addEventListener('load',()=>{
 </audio>
 </div>
 <script>
-const btn=document.getElementById('musicBtn');
-const a=document.getElementById('bgm');
-if(btn&&a){
-btn.onclick=()=>{
- if(a.paused){
-   a.currentTime = 15;
-   a.play().catch(()=>{});btn.textContent='❚❚';}
- else{a.pause();btn.textContent='▶';}
-};
+const btn = document.getElementById('musicBtn');
+const a = document.getElementById('bgm');
+let firstPlay = true;
+if(btn && a){
+    btn.onclick = () => {
+        if(a.paused){
+            if(firstPlay){
+                a.currentTime = 80;   // Change 80 to your desired start time
+                firstPlay = false;
+            }
+            a.play().catch(()=>{});
+            btn.textContent = '❚❚';
+        }else{
+            a.pause();
+            btn.textContent = '▶';
+        }
+    };
 }
 document.querySelectorAll('.next-btn').forEach(b=>{
  b.addEventListener('click',()=>document.body.animate(
