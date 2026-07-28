@@ -635,8 +635,13 @@ body::after{
 .loader.hide{opacity:0;pointer-events:none}
 .loader h1{
  font-family:'Great Vibes',cursive;
- font-size:64px;
+ font-size:clamp(34px,9vw,64px);
  margin:0;
+ white-space:nowrap;
+ display:flex;
+justify-content:center;
+align-items:center;
+ gap:8px;
 }
 .loader p{
  letter-spacing:4px;
@@ -719,7 +724,7 @@ animation:bounce 2s infinite;
 </style></head>
 <body>
 <div class="loader" id="v2loader">
-<h1>Rooshit&nbsp; ❤&nbsp; Dhruvi</h1>
+<h1><span>Rooshit</span>span><span> ❤</span>span><span> Dhruvi</span>span></h1>
 <p>Loading our 6 Month story...</p>
 </div>
 <div id="hearts"></div>
